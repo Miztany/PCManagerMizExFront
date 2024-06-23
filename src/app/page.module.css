@@ -1,0 +1,37 @@
+.windowContainer {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+}
+
+.windowHeader {
+	height: 60px;
+	flex-shrink: 0;
+}
+
+.windowNonheader {
+	height:calc(100% - 60px - 4px);
+	display: flex;
+	flex-direction: row;
+}
+
+.windowSider {
+	width: 80px;
+}
+
+.windowNonsider {
+	flex-grow: 1;
+	background-color: var(--bg-color-front);
+	border: 1px var(--border-color) solid;
+	border-radius: 5px;
+	margin: 2px;
+	height: 100%;
+}
+
+.resizeHandle {
+	border: 1px solid var(--border-color);
+}
+
+.panelGroup > div {
+	height:100%;
+}

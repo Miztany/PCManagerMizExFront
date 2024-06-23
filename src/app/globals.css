@@ -1,0 +1,43 @@
+:root{
+  --font-color-main: #e9e9e9;
+  --font-color-strong: #ffffff;
+  --font-color-black: #101010;
+
+  --bg-color-base:  #1f1f1f;
+  --bg-color-base-hover:#363636;
+  --bg-color-front: #2e2e2e;
+  --bg-color-innerHeader: #303030;
+  --bg-color-form:#232323;
+  --bg-color-form-hover: #2a2a2as;
+
+  --border-color: #666666;
+  --border-color-button:#ffffff;
+
+  --ac-color-primary: #fa8e36;
+  --ac-color-secondary: #04aa6d;
+  --ac-color-secondary-hover: #01cf84;
+
+  --table-color-normal: #414141;
+  --table-color-hover:#525252;
+  --table-color-active: var(--ac-color-primary);
+
+  --color-danger: #cf472f;
+  --color-danger-hover: #fa6b51;
+
+  
+}
+
+body{
+  font-family: "Sawarabi Gothic", sans-serif;
+  font-style: normal;
+  background-color: var(--bg-color-base);
+  color:var(--font-color-main);
+  padding:0;
+  margin:0;
+  overflow: hidden;
+}
+
+body *{
+  margin:0;
+  padding:0;
+}

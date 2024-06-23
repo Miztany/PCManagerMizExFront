@@ -1,0 +1,79 @@
+.listContainer {
+	height: 100%;
+}
+
+.listHeader{
+	height:50px;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: rows;
+	vertical-align: middle;
+}
+
+.listHeader h2{
+	font-size: 1.2rem;
+	line-height: 50px;
+	font-weight: normal;
+	flex-grow: 1;
+	margin:0 10px;
+	font-family: "M PLUS 1p", sans-serif;
+}
+
+.listButton{
+	margin:7px;
+	width:150px;
+	border: none;
+	background-color: var(--ac-color-secondary);
+	color: var(--font-color-strong);
+	font-weight: normal;
+	border-radius: 5px;
+	font-size: 1.0rem;
+	font-family: "M PLUS 1p", sans-serif;
+}
+
+.listButton:hover{
+	background-color: var(--ac-color-secondary-hover);
+}
+
+.listBody{
+	overflow-y: auto;
+	overflow-x: hidden;
+	height:100%;
+}
+
+.table {
+	border-spacing: 0px 5px;
+	width: calc(100% - 20px);
+	margin:0 10px;
+	text-align: center;
+}
+
+.header th {
+	white-space: nowrap;
+}
+
+.header{
+	height: 3rem;
+}
+
+
+.record {
+	background-color: var(--table-color-normal);
+	height:2.5rem;
+}
+
+.record:hover{
+	background-color: var(--table-color-hover);
+}
+
+
+.active{
+	background-color: var(--table-color-active) !important;
+	background-color: aqua;
+}
+
+.record td {
+	padding: 5px 20px;
+	white-space: nowrap;
+}
+

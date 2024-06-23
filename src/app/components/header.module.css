@@ -1,0 +1,14 @@
+.windowHeader{
+	text-align: center;
+	height: 60px;
+}
+
+.windowTitle{
+	font-family: "M PLUS 1p", sans-serif;
+	font-weight: normal;
+	font-size: 25px;
+	letter-spacing: 2px;
+	line-height: 60px;
+	color:var(--font-color-strong);
+}
+
