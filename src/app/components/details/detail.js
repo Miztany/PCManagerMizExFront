@@ -1,5 +1,3 @@
-'use client'
-
 import styles from './detail.module.css';
 import useSWR from 'swr';
 import ViewRental from './view/viewRental';

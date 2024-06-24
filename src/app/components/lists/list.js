@@ -1,7 +1,4 @@
-'use client'
-
 import styles from './list.module.css';
-import { useState } from 'react';
 import useSWR from 'swr';
 import ListRental from './listRental';
 import ListDevice from './listDevice';
