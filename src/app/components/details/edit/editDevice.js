@@ -26,7 +26,7 @@ export default function EditDevice(props) {
 	const [remarks, setRemarks] = useState(props.detail.remarks || '');
 	const [deleteFlag, setDeletaFlag] = useState(props.detail.deleteFlag);
 
-	const formDate = {
+	const formData = {
 		assetNum: assetNum,
 		maker: maker,
 		operatingSystem: operatingSystem,
@@ -45,7 +45,7 @@ export default function EditDevice(props) {
 
 	return (
 		<>
-			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formDate, props.setMode)} />} />
+			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formData, props.setMode)} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>
@@ -75,7 +75,7 @@ export default function EditDevice(props) {
 					</tbody>
 				</table>
 			</div>
-			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formDate, props.setMode, props.setActiveId)} />} />
+			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formData, props.setMode, props.setActiveId)} />} />
 		</>
 	)
 }

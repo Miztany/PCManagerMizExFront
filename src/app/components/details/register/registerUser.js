@@ -3,13 +3,10 @@
 import styles from '../detail.module.css'
 import DetailHeader from '../detailHeader';
 import DetailFooter from '../detailFooter';
-import deleteRecord from '../deleteRecord';
-import saveRecord from '../saveRecord';
+import registerRecord from '../registerRecord';
 import { useState } from 'react';
 
 export default function RegisterUser(props) {
-
-	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
 
 	const [employeeNum, setEmployeeNum] = useState('');
 	const [name, setName] = useState('');
@@ -26,7 +23,7 @@ export default function RegisterUser(props) {
 	const [retireDate, setRetireDate] = useState('');
 	const [deleteFlag, setDeletaFlag] = useState(false);
 
-	const formDate = {
+	const formData = {
 		employeeNum: employeeNum,
 		name: name,
 		nameKana: nameKana,
@@ -45,7 +42,7 @@ export default function RegisterUser(props) {
 
 	return (
 		<>
-			<DetailHeader title='ユーザー登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { saveRecord(props.registerUrl, formDate, props.setMode, () => props.setActiveId(employeenum)) }} />} />
+			<DetailHeader title='ユーザー登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(props.registerUrl, formData, props.setMode, () => props.setActiveId(employeenum)) }} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

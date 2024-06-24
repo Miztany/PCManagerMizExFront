@@ -9,6 +9,9 @@ import Header from "@/app/components/header";
 
 export default function Home() {
 
+  // ID: レコードのID
+  // target: Rental, Device, User
+  // mode: View, Edit, Register, Rental, Return, Inventory 
   const [activeId, setActiveId] = useState(null);
   const [activeTarget, setActiveTarget] = useState('Rental');
   const [mode, setMode] = useState('View');
@@ -17,6 +20,7 @@ export default function Home() {
   let saveUrl = process.env.NEXT_PUBLIC_SPRING_URL + '/post' + activeTarget + 'Save';
   let deleteUrl = process.env.NEXT_PUBLIC_SPRING_URL + '/post' + activeTarget + 'Delete';
   let registerUrl = process.env.NEXT_PUBLIC_SPRING_URL + '/post' + activeTarget + 'Register';
+  let formUrl = process.env.NEXT_PUBLIC_SPRING_URL + '/post' + activeTarget + 'mode';
 
   return (
     <div className={styles.windowContainer}>
@@ -30,7 +34,7 @@ export default function Home() {
             </Panel>
             <PanelResizeHandle className={styles.resizeHandle} />
             <Panel defaultSize={60}>
-              <Detail detailUrl={detailUrl} saveUrl={saveUrl} deleteUrl={deleteUrl} registerUrl={registerUrl} activeTarget={activeTarget} mode={mode} setMode={setMode} setActiveId={setActiveId} />
+              <Detail detailUrl={detailUrl} saveUrl={saveUrl} deleteUrl={deleteUrl} formUrl={formUrl} registerUrl={registerUrl} activeTarget={activeTarget} mode={mode} setMode={setMode} setActiveId={setActiveId} />
             </Panel>
           </PanelGroup>
         </div>

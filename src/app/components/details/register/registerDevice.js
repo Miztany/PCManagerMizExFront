@@ -3,12 +3,10 @@
 import styles from '../detail.module.css'
 import DetailHeader from '../detailHeader';
 import DetailFooter from '../detailFooter';
-import saveRecord from '../saveRecord';
+import registerRecord from '../registerRecord';
 import { useState } from 'react';
 
 export default function RegisterDevice(props) {
-
-	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
 
 	const [assetNum, setAssetNum] = useState('');
 	const [maker, setMaker] = useState('');
@@ -25,7 +23,7 @@ export default function RegisterDevice(props) {
 	const [remarks, setRemarks] = useState('');
 	const [deleteFlag, setDeletaFlag] = useState(false);
 
-	const formDate = {
+	const formData = {
 		assetNum: assetNum,
 		maker: maker,
 		operatingSystem: operatingSystem,
@@ -44,7 +42,7 @@ export default function RegisterDevice(props) {
 
 	return (
 		<>
-			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { saveRecord(props.registerUrl, formDate, props.setMode, () => props.setActiveId(assetNum)) }} />} />
+			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(props.registerUrl, formData, props.setMode, () => props.setActiveId(assetNum)) }} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

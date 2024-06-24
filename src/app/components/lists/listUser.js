@@ -47,7 +47,7 @@ export default function ListUser(props) {
 						<tr className={styles.header}>
 							<th>社員番号</th>
 							<th>氏名</th>
-							<th>初速部署</th>
+							<th>所属部署</th>
 							<th>年齢</th>
 							<th>役職</th>
 							<th>PCアカウント権限</th>

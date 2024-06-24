@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "PCManaer",
+  title: "PCManager",
   description: "PCManagerMizExFront",
 };
 

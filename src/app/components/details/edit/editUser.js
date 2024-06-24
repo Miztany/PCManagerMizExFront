@@ -26,7 +26,7 @@ export default function EditUser(props) {
 	const [retireDate, setRetireDate] = useState(props.detail.retireDate || '');
 	const [deleteFlag, setDeletaFlag] = useState(props.detail.deleteFlag);
 
-	const formDate = {
+	const formData = {
 		employeeNum: employeeNum,
 		name: name,
 		nameKana: nameKana,
@@ -45,7 +45,7 @@ export default function EditUser(props) {
 
 	return (
 		<>
-			<DetailHeader title='ユーザー編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formDate, props.setMode)} />} />
+			<DetailHeader title='ユーザー編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formData, props.setMode)} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>
@@ -76,7 +76,7 @@ export default function EditUser(props) {
 					</tbody>
 				</table>
 			</div>
-			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formDate, props.setMode, props.setActiveId)} />} />
+			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formData, props.setMode, props.setActiveId)} />} />
 		</>
 	)
 }

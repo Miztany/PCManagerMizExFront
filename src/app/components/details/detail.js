@@ -23,11 +23,7 @@ export default function Detail(props) {
 
 	switch (props.activeTarget) {
 		case 'Rental':
-			switch (props.mode) {
-				case 'View':
-					contents = data.result ? <><ViewRental detail={detail} setMode={props.setMode} /></> : <></>;
-					break;
-			}
+			contents = data.result ? <><ViewRental formUrl={props.formUrl} detail={detail} mode={props.mode} setMode={props.setMode} /></> : <></>;
 			break;
 		case 'Device':
 			switch (props.mode) {
