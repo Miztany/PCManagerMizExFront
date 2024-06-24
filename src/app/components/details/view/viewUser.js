@@ -34,7 +34,7 @@ export default function ViewUser(props) {
 					<tr><th>電話番号</th><td>{props.detail.telNum}</td></tr>
 					<tr><th>メールアドレス</th><td>{props.detail.mailAddress}</td></tr>
 					<tr><th>年齢</th><td>{props.detail.age}</td></tr>
-					<tr><th>年齢</th><td>{gender}</td></tr>
+					<tr><th>性別</th><td>{gender}</td></tr>
 					<tr><th>役職</th><td>{props.detail.position}</td></tr>
 					<tr><th>PCアカウント権限</th><td>{props.detail.accountLevel}</td></tr>
 					<tr><th>登録日</th><td>{props.detail.registerDate}</td></tr>
@@ -43,6 +43,7 @@ export default function ViewUser(props) {
 				</tbody>
 			</table>
 			</div>
+			<DetailFooter />
 		</>
 	)
 }

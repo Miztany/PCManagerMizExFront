@@ -46,6 +46,7 @@ export default function ViewRental(props) {
 				</tbody>
 			</table>
 			</div>
+			<DetailFooter />
 		</>
 	)
 }

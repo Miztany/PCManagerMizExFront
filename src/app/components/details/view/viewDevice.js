@@ -30,6 +30,7 @@ export default function ViewDevice(props) {
 				</tbody>
 			</table>
 			</div>
+			<DetailFooter />
 		</>
 	)
 }

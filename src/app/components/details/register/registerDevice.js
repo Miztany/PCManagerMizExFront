@@ -3,28 +3,27 @@
 import styles from '../detail.module.css'
 import DetailHeader from '../detailHeader';
 import DetailFooter from '../detailFooter';
-import deleteRecord from '../deleteRecord';
 import saveRecord from '../saveRecord';
 import { useState } from 'react';
 
-export default function EditDevice(props) {
+export default function RegisterDevice(props) {
 
 	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
 
-	const [assetNum, setAssetNum] = useState(props.detail.assetNum);
-	const [maker, setMaker] = useState(props.detail.maker);
-	const [operatingSystem, setOperatingSystem] = useState(props.detail.operatingSystem);
-	const [memory, setMemory] = useState(props.detail.memory);
-	const [capacity, setCapacity] = useState(props.detail.capacity);
-	const [graphicsBoard, setGraphicsBoard] = useState(props.detail.graphicsBoard);
-	const [storageLocation, setStorageLocation] = useState(props.detail.storageLocation);
-	const [failure, setFailure] = useState(props.detail.failure);
-	const [startDate, setStartDate] = useState(props.detail.startDate);
-	const [endDate, setEndDate] = useState(props.detail.endDate);
-	const [registerDate, setRegisterDate] = useState(props.detail.registerDate);
-	const [updateDate, setUpdateDate] = useState(props.detail.updateDate);
-	const [remarks, setRemarks] = useState(props.detail.remarks || '');
-	const [deleteFlag, setDeletaFlag] = useState(props.detail.deleteFlag);
+	const [assetNum, setAssetNum] = useState('');
+	const [maker, setMaker] = useState('');
+	const [operatingSystem, setOperatingSystem] = useState('');
+	const [memory, setMemory] = useState(0);
+	const [capacity, setCapacity] = useState('');
+	const [graphicsBoard, setGraphicsBoard] = useState(false);
+	const [storageLocation, setStorageLocation] = useState('');
+	const [failure, setFailure] = useState(false);
+	const [startDate, setStartDate] = useState('');
+	const [endDate, setEndDate] = useState('');
+	const [registerDate, setRegisterDate] = useState((new Date()).toLocaleDateString('sv-SE'));
+	const [updateDate, setUpdateDate] = useState((new Date()).toLocaleDateString('sv-SE'));
+	const [remarks, setRemarks] = useState('');
+	const [deleteFlag, setDeletaFlag] = useState(false);
 
 	const formDate = {
 		assetNum: assetNum,
@@ -45,11 +44,11 @@ export default function EditDevice(props) {
 
 	return (
 		<>
-			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formDate, props.setMode)} />} />
+			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { saveRecord(props.registerUrl, formDate, props.setMode, () => props.setActiveId(assetNum)) }} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>
-						<tr><th>資産番号</th><td><input className={styles.readOnly} type='text' name='assetNum' value={assetNum} onChange={(e) => setAssetNum(e.target.value)} readOnly inert='true' /></td></tr>
+						<tr><th>資産番号</th><td><input type='text' name='assetNum' value={assetNum} onChange={(e) => setAssetNum(e.target.value)} /></td></tr>
 						<tr><th>メーカー</th><td><input type='text' name='maker' value={maker} onChange={(e) => setMaker(e.target.value)} /></td></tr>
 						<tr><th>OS</th><td><input type='text' name='operatingSystem' value={operatingSystem} onChange={(e) => setOperatingSystem(e.target.value)} /></td></tr>
 						<tr><th>メモリ</th><td><input type='number' name='memory' value={memory} onChange={(e) => setMemory(e.target.value)} />GB</td></tr>
@@ -75,7 +74,7 @@ export default function EditDevice(props) {
 					</tbody>
 				</table>
 			</div>
-			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formDate, props.setMode, props.setActiveId)} />} />
+			<DetailFooter />
 		</>
 	)
 }

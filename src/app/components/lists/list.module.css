@@ -1,5 +1,7 @@
 .listContainer {
 	height: 100%;
+	display:flex;
+	flex-direction: column;
 }
 
 .listHeader{
@@ -38,7 +40,8 @@
 .listBody{
 	overflow-y: auto;
 	overflow-x: hidden;
-	height:100%;
+	flex-grow: 1;
+	flex-shrink: 1;
 }
 
 .table {

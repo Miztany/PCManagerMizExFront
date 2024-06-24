@@ -28,7 +28,15 @@ export default function ListDevice(props) {
 		);
 	})
 
-	const buttons = <input type='button' value='新規登録' className={styles.listButton} />
+	const buttons = <input
+	 type='button' 
+	 value='新規登録' 
+	 className={styles.listButton} 
+	 onClick={() => {
+		props.setMode('Register');
+		props.setActiveId(null);
+	}}
+	/>
 
 	return (
 		<div className={styles.listContainer}>
