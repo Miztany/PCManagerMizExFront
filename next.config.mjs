@@ -6,14 +6,14 @@ const nextConfig = {
       {
         // 対象APIのパスパターン
         // 今回は src/app/api/ 配下にAPIを作っているので下記のようにする
-        source: "/api/:path*",
+        source: "/:path*",
         headers: [
           {
             // CORSを許可するオリジン
             key: "Access-Control-Allow-Origin",
             // すべてのオリジンを許可するなら * (アスタリスク)
             // ただセキュリティ的にはよろしくないので注意
-            value: "https://sample-prisma-next-app.vercel.app",
+            value: "*",
           },
           {
             // 許可するメソッド
@@ -31,7 +31,6 @@ const nextConfig = {
   },
 	
 };
-
 
 export default nextConfig;
 

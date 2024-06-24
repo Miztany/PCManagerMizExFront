@@ -7,6 +7,9 @@ import EditDevice from './edit/editDevice'
 import RegisterDevice from './register/registerDevice';
 import EditUser from './edit/editUser';
 import RegisterUser from './register/registerUser';
+import ManageRental from './manage/manageRental';
+import ManageInventory from './manage/manageInventory';
+import ManageReturn from './manage/manageReturn';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -23,7 +26,20 @@ export default function Detail(props) {
 
 	switch (props.activeTarget) {
 		case 'Rental':
-			contents = data.result ? <><ViewRental formUrl={props.formUrl} detail={detail} mode={props.mode} setMode={props.setMode} /></> : <></>;
+			switch (props.mode) {
+				case 'View':
+					contents = data.result ? <><ViewRental  detail={detail} setMode={props.setMode} /></> : <></>;
+					break;
+				case 'Rental':
+					contents = <><ManageRental manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
+					break;
+				case 'Return':
+					contents = <><ManageReturn manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
+					break;
+				case 'Inventory':
+					contents = <><ManageInventory manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
+					break;
+			}
 			break;
 		case 'Device':
 			switch (props.mode) {
@@ -31,10 +47,10 @@ export default function Detail(props) {
 					contents = data.result ? <><ViewDevice detail={detail} setMode={props.setMode} /></> : <></>;
 					break;
 				case 'Edit':
-					contents = <><EditDevice detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} mode={props.mode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
+					contents = <><EditDevice detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} setActiveId={props.setActiveId} /></>
 					break;
 				case 'Register':
-					contents = <><RegisterDevice detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} mode={props.mode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
+					contents = <><RegisterDevice detail={detail} setMode={props.setMode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
 					break;
 			}
 			break;
@@ -44,10 +60,10 @@ export default function Detail(props) {
 					contents = data.result ? <><ViewUser detail={detail} setMode={props.setMode} /></> : <></>;
 					break;
 				case 'Edit':
-					contents = <><EditUser detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} mode={props.mode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
+					contents = <><EditUser detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} setActiveId={props.setActiveId} /></>
 					break;
 				case 'Register':
-					contents = <><RegisterUser detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} mode={props.mode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
+					contents = <><RegisterUser detail={detail} setMode={props.setMode}  registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
 					break;
 			}
 			break;

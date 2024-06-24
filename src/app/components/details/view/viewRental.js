@@ -3,7 +3,6 @@
 import styles from '../detail.module.css'
 import DetailHeader from '../detailHeader';
 import DetailFooter from '../detailFooter';
-import FormRental from './form/formRental';
 
 export default function ViewRental(props) {
 	let returnExpDate;
@@ -26,22 +25,7 @@ export default function ViewRental(props) {
 
 	}
 
-	let form = <></>;
-	// switch (props.mode) {
-	// 	case 'View':
-	// 		form = <></>;
-	// 		break;
-	// 	case 'Rental':
-	// 		form = <FormRental detail={props.detail} setMode={props.setMode} formUrl={props.formUrl} />
-	// 		break;
-	// 	case 'Return':
-	// 		form = <FormReturn detail={props.detail} setMode={props.setMode} formUrl={props.formUrl} />
-	// 		break;
-	// 	case 'Inventory':
-	// 		form = <FormInventory detail={props.detail} setMode={props.setMode} formUrl={props.formUrl} />
-	// 		break;
 
-	// }
 
 	return (
 		<>
@@ -63,9 +47,7 @@ export default function ViewRental(props) {
 						<tr><th>備考</th><td>{props.detail.remarks}</td></tr>
 					</tbody>
 				</table>
-				{form}
 			</div>
-			
 			<DetailFooter />
 		</>
 	)
