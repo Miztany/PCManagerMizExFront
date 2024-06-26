@@ -4,8 +4,6 @@ import { LuBookOpenCheck } from "react-icons/lu";
 import { LuMonitor } from "react-icons/lu";
 import { LuUsers } from "react-icons/lu";
 import SideButton from "./sideButton";
-import { useState } from "react";
-import styles from "./sider.module.css"
 
 export default function Sider(props) {
 	const iconSize = '30px'
@@ -18,11 +16,11 @@ export default function Sider(props) {
 
 	const elsButtons = [];
 	menu.forEach((e) => {
-		elsButtons.push(<SideButton key={e.id} id={e.id} icon={e.icon} text={e.text} target={e.target} activeTarget={props.activeTarget} setActiveTarget={props.setActiveTarget} setActiveId={props.setActiveId} setMode={props.setMode} />);
+		elsButtons.push(<SideButton key={e.id} id={e.id} icon={e.icon} text={e.text} target={e.target} />);
 	});
 
 	return (
-		<div className={styles.siderContainer}>
+		<div>
 			{elsButtons}
 		</div>
 

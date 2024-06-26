@@ -1,4 +1,4 @@
-import styles from './detail.module.css'
+import styles from '../detail.module.css'
 
 
 export default function DetailFooter(props) {

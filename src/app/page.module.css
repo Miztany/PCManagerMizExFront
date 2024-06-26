@@ -35,3 +35,10 @@
 .panelGroup > div {
 	height:100%;
 }
+
+
+.detailContainer {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+}

@@ -1,9 +1,9 @@
 import postAction from './postAction'
 
-export default async function deleteRecord(deleteUrl, formDate, setMode, setActiveId){
+export default async function deleteRecord(deleteUrl,formDate, setActiveMode, setActiveId){
 	const data = await postAction(deleteUrl, formDate);
 	if(data.result){
-		setMode('View');
+		setActiveMode('View');
 		setActiveId(null);
 	}else{
 		alert(data.message);

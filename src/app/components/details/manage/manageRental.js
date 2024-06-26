@@ -1,17 +1,22 @@
 'use client'
 import styles from '../detail.module.css'
 import { useState } from 'react';
-import saveRecord from '../saveRecord';
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
+import saveRecord from '../action/saveRecord';
+import DetailHeader from '../compnents/detailHeader';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { manageUrl,activeMode } from '@/state/states';
 
 export default function ManageRental(props) {
+
+	const manageUrlValue = useRecoilValue(manageUrl);
+	const setActiveMode = useSetRecoilState(activeMode);
+
 
 	const [rentalId, setRentalId] = useState(props.detail.rentalId);
 	const [employeeNum, setEmployeeNum] = useState("");
 	const [loanDate, setLoanDate] = useState((new Date()).toLocaleDateString('sv-SE'));
 	const [inventoryDate, setInventoryDate] = useState(props.detail.inventoryDate);
-	const [remarks, setRemarks] = useState(props.detail.remarks);
+	const [remarks, setRemarks] = useState(props.detail.remarks || '');
 
 	let formData = {
 		rentalId: rentalId,
@@ -23,7 +28,7 @@ export default function ManageRental(props) {
 
 	return (
 <>
-	<DetailHeader title='貸出' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.manageUrl, formData, props.setMode)} />} />
+	<DetailHeader title='貸出' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(manageUrlValue, formData, setActiveMode)} />} />
 	<div className={styles.detailBody}>
 		<table className={styles.editTable}>
 			<tbody>
@@ -35,7 +40,6 @@ export default function ManageRental(props) {
 			</tbody>
 		</table>
 	</div>
-	<DetailFooter />
 </>
 	)
 }

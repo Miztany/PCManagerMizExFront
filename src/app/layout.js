@@ -1,9 +1,7 @@
-import "./globals.css";
+'use client'
 
-export const metadata = {
-  title: "PCManager",
-  description: "PCManagerMizExFront",
-};
+import "./globals.css";
+import { RecoilRoot } from "recoil";
 
 export default function RootLayout({ children }) {
   return (
@@ -15,8 +13,11 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet" />
       </head>
       <body>
-      {children}
+        <RecoilRoot>
+          {children}
+        </RecoilRoot >
       </body>
     </html>
+
   );
 }

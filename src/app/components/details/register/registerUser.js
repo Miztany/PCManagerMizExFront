@@ -1,12 +1,19 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
-import registerRecord from '../registerRecord';
+import DetailHeader from '../compnents/detailHeader';
+import DetailFooter from '../compnents/detailFooter';
+import registerRecord from '../action/registerRecord';
 import { useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { activeId, activeMode, registerUrl } from '@/state/states';
 
 export default function RegisterUser(props) {
+
+	const setActiveId = useSetRecoilState(activeId);
+	const setActiveMode = useSetRecoilState(activeMode);
+	const registerUrlValue = useRecoilValue(registerUrl);
+
 
 	const [employeeNum, setEmployeeNum] = useState('');
 	const [name, setName] = useState('');
@@ -42,7 +49,7 @@ export default function RegisterUser(props) {
 
 	return (
 		<>
-			<DetailHeader title='ユーザー登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(props.registerUrl, formData, props.setMode, () => props.setActiveId(employeenum)) }} />} />
+			<DetailHeader title='ユーザー登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(employeeNum)) }} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

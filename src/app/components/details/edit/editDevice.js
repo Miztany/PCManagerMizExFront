@@ -1,15 +1,22 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
-import deleteRecord from '../deleteRecord';
-import saveRecord from '../saveRecord';
+import DetailHeader from '../compnents/detailHeader';
+import DetailFooter from '../compnents/detailFooter';
+import deleteRecord from '../action/deleteRecord';
+import saveRecord from '../action/saveRecord';
 import { useState } from 'react';
+import { useRecoilValue, useSetRecoilState} from 'recoil';
+import { saveUrl,activeMode, activeId, deleteUrl } from '@/state/states';
 
 export default function EditDevice(props) {
 
 	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
+	const setActiveMode = useSetRecoilState(activeMode);
+	const setActiveId = useSetRecoilState(activeId);
+	const saveUrlValue = useRecoilValue(saveUrl);
+	const deleteUrlValue = useRecoilValue(deleteUrl);
+
 
 	const [assetNum, setAssetNum] = useState(props.detail.assetNum);
 	const [maker, setMaker] = useState(props.detail.maker);
@@ -45,7 +52,7 @@ export default function EditDevice(props) {
 
 	return (
 		<>
-			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(props.saveUrl, formData, props.setMode)} />} />
+			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(saveUrlValue, formData, setActiveMode)} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>
@@ -75,7 +82,7 @@ export default function EditDevice(props) {
 					</tbody>
 				</table>
 			</div>
-			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(props.deleteUrl, formData, props.setMode, props.setActiveId)} />} />
+			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(deleteUrlValue, formData, setActiveMode, setActiveId)} />} />
 		</>
-	)
+	);
 }

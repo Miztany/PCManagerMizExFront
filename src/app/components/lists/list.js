@@ -1,36 +1,33 @@
-import styles from './list.module.css';
 import useSWR from 'swr';
 import ListRental from './listRental';
 import ListDevice from './listDevice';
 import ListUser from './listUser';
+import { useRecoilValue } from 'recoil';
+import { listUrl, activeTarget } from '@/state/states';
 
 
 const fetcher = url => fetch(url).then(r => r.json());
 
 export default function List(props) {
 
+	const activeTargetValue = useRecoilValue(activeTarget)
+
 	// 通信して一覧を取得
-	const { data, error, isLoading } = useSWR(props.listUrl, fetcher);
+	const { data, error, isLoading } = useSWR(useRecoilValue(listUrl), fetcher);
 	if (error) return <div>failed to load</div>;
 	if (isLoading) return <div>loading...</div>;
 	const list = data;
 
-	let contents;
-	switch (props.activeTarget) {
+	switch (activeTargetValue) {
 		case 'Rental':
-			contents = <><ListRental list={list} activeId={props.activeId} setActiveId={props.setActiveId} setMode={props.setMode} /></>;
-			break;
+			return <><ListRental list={list} /></>;
 		case 'Device':
-			contents = <><ListDevice list={list} activeId={props.activeId} setActiveId={props.setActiveId} setMode={props.setMode} /></>;
-			break;
+			return <><ListDevice list={list} /></>;
 		case 'User':
-			contents = <><ListUser list={list} activeId={props.activeId} setActiveId={props.setActiveId} setMode={props.setMode} /></>;
-			break;
+			return <><ListUser list={list} /></>;
+		default:
+			return <></>;
 	}
 
-	return (
-		<div className={styles.listContainer}>
-			{contents}
-		</div>
-	)
+
 }

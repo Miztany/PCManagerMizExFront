@@ -29,13 +29,9 @@
 	vertical-align: middle;
 }
 
-.listFooter h2{
-	font-size: 1.2rem;
-	line-height: 50px;
-	font-weight: normal;
+.listFooter div{
 	flex-grow: 1;
 	margin:0 10px;
-	font-family: "M PLUS 1p", sans-serif;
 }
 
 .listFilter{

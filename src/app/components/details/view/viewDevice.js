@@ -1,16 +1,18 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
+import DetailHeader from '../compnents/detailHeader';
+import DetailFooter from '../compnents/detailFooter';
+import { useSetRecoilState } from 'recoil';
+import { activeMode } from '@/state/states';
 
 export default function ViewDevice(props) {
 
-	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
+	const setActiveMode = useSetRecoilState(activeMode);
 
 	return (
 		<>
-			<DetailHeader title='機器詳細' buttons={<input type='button' value='編集' className={styles.detailButton} onClick={() => props.setMode('Edit')} />} />
+			<DetailHeader title='機器詳細' buttons={<input type='button' value='編集' className={styles.detailButton} onClick={() => setActiveMode('Edit')} />} />
 			<div className={styles.detailBody}>
 			<table className={styles.detailTable}>
 				<tbody>
@@ -32,5 +34,5 @@ export default function ViewDevice(props) {
 			</div>
 			<DetailFooter />
 		</>
-	)
+	);
 }

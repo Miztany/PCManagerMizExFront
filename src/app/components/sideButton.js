@@ -1,20 +1,24 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
 import styles from './sideButton.module.css';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { activeTarget, activeMode, activeId } from '@/state/states'
 
 export default function SideButton(props) {
 
-	const router = useRouter();
-	const buttonClass = props.target === props.activeTarget ? styles.sideButton + ' ' + styles.activeButton : styles.sideButton
-	
+	const setActiveId = useSetRecoilState(activeId);
+	const setActiveMode = useSetRecoilState(activeMode);
+	const setActiveTarget = useSetRecoilState(activeTarget);
+
+	const buttonClass = props.target === useRecoilValue(activeTarget) ? styles.sideButton + ' ' + styles.activeButton : styles.sideButton
+
 	return (
 		<div
 			className={buttonClass}
 			onClick={() => {
-				props.setActiveId(null);
-				props.setMode('View');
-				props.setActiveTarget(props.target);
+				setActiveId(null);
+				setActiveMode('View');
+				setActiveTarget(props.target);
 			}}
 			role='button'
 			tabIndex={props.id}

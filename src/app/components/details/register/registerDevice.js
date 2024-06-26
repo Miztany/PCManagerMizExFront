@@ -1,12 +1,18 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
-import registerRecord from '../registerRecord';
+import DetailHeader from '../compnents/detailHeader';
+import DetailFooter from '../compnents/detailFooter';
+import registerRecord from '../action/registerRecord';
 import { useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { activeId, activeMode, registerUrl } from '@/state/states';
 
 export default function RegisterDevice(props) {
+
+	const setActiveId = useSetRecoilState(activeId);
+	const setActiveMode = useSetRecoilState(activeMode);
+	const registerUrlValue = useRecoilValue(registerUrl);
 
 	const [assetNum, setAssetNum] = useState('');
 	const [maker, setMaker] = useState('');
@@ -42,7 +48,7 @@ export default function RegisterDevice(props) {
 
 	return (
 		<>
-			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(props.registerUrl, formData, props.setMode, () => props.setActiveId(assetNum)) }} />} />
+			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(assetNum)) }} />} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

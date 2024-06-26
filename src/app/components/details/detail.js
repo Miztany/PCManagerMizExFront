@@ -1,4 +1,4 @@
-import styles from './detail.module.css';
+'use client'
 import useSWR from 'swr';
 import ViewRental from './view/viewRental';
 import ViewDevice from './view/viewDevice';
@@ -10,68 +10,54 @@ import RegisterUser from './register/registerUser';
 import ManageRental from './manage/manageRental';
 import ManageInventory from './manage/manageInventory';
 import ManageReturn from './manage/manageReturn';
+import { useRecoilValue } from 'recoil';
+import { activeId, detailtUrl, activeTarget, activeMode } from '@/state/states';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
 export default function Detail(props) {
-	if (props.detailId === null) return <></>;
+	const activeTargetValue = useRecoilValue(activeTarget);
+	const activeModeValue = useRecoilValue(activeMode);
 
 	// 通信して詳細を取得
-	const { data, error, isLoading } = useSWR(props.detailUrl, fetcher);
+	const { data, error, isLoading } = useSWR(useRecoilValue(detailtUrl), fetcher);
 	if (error) return <div>failed to load</div>;
 	if (isLoading) return <></>;
 	const detail = data.content;
 
-	let contents;
-
-	switch (props.activeTarget) {
+	switch (activeTargetValue) {
 		case 'Rental':
-			switch (props.mode) {
+			switch (activeModeValue) {
 				case 'View':
-					contents = data.result ? <><ViewRental  detail={detail} setMode={props.setMode} /></> : <></>;
-					break;
+					return data.result ? <><ViewRental detail={detail} /></> : <></>;
 				case 'Rental':
-					contents = <><ManageRental manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
-					break;
+					return <><ManageRental detail={detail} /></>
 				case 'Return':
-					contents = <><ManageReturn manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
-					break;
+					return <><ManageReturn detail={detail} /></>
 				case 'Inventory':
-					contents = <><ManageInventory manageUrl={props.manageUrl} detail={detail} setMode={props.setMode} /></>
-					break;
+					return <><ManageInventory detail={detail} /></>
 			}
 			break;
 		case 'Device':
-			switch (props.mode) {
+			switch (activeModeValue) {
 				case 'View':
-					contents = data.result ? <><ViewDevice detail={detail} setMode={props.setMode} /></> : <></>;
-					break;
+					return data.result ? <><ViewDevice detail={detail} /></> : <></>;
 				case 'Edit':
-					contents = <><EditDevice detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} setActiveId={props.setActiveId} /></>
-					break;
+					return <><EditDevice detail={detail} /></>
 				case 'Register':
-					contents = <><RegisterDevice detail={detail} setMode={props.setMode} registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
-					break;
+					return <><RegisterDevice detail={detail} /></>
 			}
 			break;
 		case 'User':
-			switch (props.mode) {
+			switch (activeModeValue) {
 				case 'View':
-					contents = data.result ? <><ViewUser detail={detail} setMode={props.setMode} /></> : <></>;
-					break;
+					return data.result ? <><ViewUser detail={detail} /></> : <></>;
 				case 'Edit':
-					contents = <><EditUser detail={detail} setMode={props.setMode} saveUrl={props.saveUrl} deleteUrl={props.deleteUrl} setActiveId={props.setActiveId} /></>
-					break;
+					return <><EditUser detail={detail} /></>
 				case 'Register':
-					contents = <><RegisterUser detail={detail} setMode={props.setMode}  registerUrl={props.registerUrl} setActiveId={props.setActiveId} /></>
-					break;
+					return <><RegisterUser detail={detail} /></>
 			}
 			break;
 	}
-
-	return (
-		<div className={styles.detailContainer}>
-			{contents}
-		</div>
-	)
+	return <></>;
 }

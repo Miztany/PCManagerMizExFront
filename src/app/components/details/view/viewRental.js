@@ -1,10 +1,15 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../detailHeader';
-import DetailFooter from '../detailFooter';
+import DetailHeader from '../compnents/detailHeader';
+import DetailFooter from '../compnents/detailFooter';
+import { useSetRecoilState } from 'recoil';
+import { activeMode } from '@/state/states';
 
 export default function ViewRental(props) {
+
+	const setActiveMode = useSetRecoilState(activeMode);
+
 	let returnExpDate;
 	if (!props.detail.free) {
 		let dt = new Date(props.detail.loanDate);
@@ -14,18 +19,16 @@ export default function ViewRental(props) {
 	let buttons;
 	if (props.detail.free) {
 		buttons = <>
-			<input type='button' value='貸出' className={styles.detailButton} onClick={() => props.setMode('Rental')} />
-			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => props.setMode('Inventory')} />
+			<input type='button' value='貸出' className={styles.detailButton} onClick={() => setActiveMode('Rental')} />
+			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} />
 		</>
 	} else {
 		buttons = <>
-			<input type='button' value='返却' className={styles.detailButton} onClick={() => props.setMode('Return')} />
-			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => props.setMode('Inventory')} />
+			<input type='button' value='返却' className={styles.detailButton} onClick={() => setActiveMode('Return')} />
+			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} />
 		</>
 
 	}
-
-
 
 	return (
 		<>
@@ -50,5 +53,5 @@ export default function ViewRental(props) {
 			</div>
 			<DetailFooter />
 		</>
-	)
+	);
 }
