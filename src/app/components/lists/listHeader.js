@@ -5,7 +5,7 @@ export default function ListHeader(props) {
 	return (
 		<div className={styles.listHeader}>
 			<h2>{props.title}</h2>
-			{props.buttons}
+			{props.filter}
 		</div>
 	)
 }

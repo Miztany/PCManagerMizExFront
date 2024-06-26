@@ -8,12 +8,13 @@ import DetailFooter from '../detailFooter';
 export default function ManageReturn(props) {
 
 	const [rentalId, setRentalId] = useState(props.detail.rentalId);
-	const [returnDate, setReturnDate] = useState('');
-
+	const [returnDate, setReturnDate] = useState((new Date()).toLocaleDateString('sv-SE'));
+	const [remarks, setRemarks] = useState(props.detail.remarks);
 
 	let formData = {
 		rentalId: rentalId,
 		returnDate: returnDate,
+		remarks: remarks,
 	}
 
 	return (
@@ -24,6 +25,7 @@ export default function ManageReturn(props) {
 			<tbody>
 				<tr><th>ID</th><td><input className={styles.readOnly} type='number' name='rentalId' value={rentalId} onChange={(e) => setRentalId(e.target.value)} readOnly inert='true' /></td></tr>
 				<tr><th>返却日</th><td><input type='date' name='returnDate' value={returnDate} onChange={(e) => setReturnDate(e.target.value)} /></td></tr>
+				<tr><th>備考</th><td><input type='text' name='remaks' value={remarks} onChange={(e) => setRemarks(e.target.value)} /></td></tr>
 			</tbody>
 		</table>
 	</div>

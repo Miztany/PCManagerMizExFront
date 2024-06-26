@@ -9,9 +9,9 @@ export default function ManageRental(props) {
 
 	const [rentalId, setRentalId] = useState(props.detail.rentalId);
 	const [employeeNum, setEmployeeNum] = useState("");
-	const [loanDate, setLoanDate] = useState("");
+	const [loanDate, setLoanDate] = useState((new Date()).toLocaleDateString('sv-SE'));
 	const [inventoryDate, setInventoryDate] = useState(props.detail.inventoryDate);
-	const [remarks, setRemarks] = useState("");
+	const [remarks, setRemarks] = useState(props.detail.remarks);
 
 	let formData = {
 		rentalId: rentalId,

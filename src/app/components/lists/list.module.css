@@ -21,9 +21,48 @@
 	font-family: "M PLUS 1p", sans-serif;
 }
 
+.listFooter{
+	height:50px;
+	border-top: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: rows;
+	vertical-align: middle;
+}
+
+.listFooter h2{
+	font-size: 1.2rem;
+	line-height: 50px;
+	font-weight: normal;
+	flex-grow: 1;
+	margin:0 10px;
+	font-family: "M PLUS 1p", sans-serif;
+}
+
+.listFilter{
+	margin:7px;
+	width:200px;
+	height:calc( 50px - 16px);
+	border: none;
+	font-weight: normal;
+	border-radius: 3px;
+	border: 1px solid var(--border-color-filter);
+	background-color: var(--bg-color-form);
+	color: var(--font-color-main);
+	font-family: "Sawarabi Gothic", sans-serif;
+	font-style: normal;
+	box-shadow: none;
+	padding: 0 3px;
+	font-size: 1.0rem;
+}
+
+.listFilter:hover {
+	background-color: var(--bg-color-form-hover);
+}
+
 .listButton{
 	margin:7px;
 	width:150px;
+	height:calc( 50px - 14px);
 	border: none;
 	background-color: var(--ac-color-secondary);
 	color: var(--font-color-strong);
@@ -80,3 +119,6 @@
 	white-space: nowrap;
 }
 
+.sorticon{
+	height:1.5rem;
+}

@@ -9,11 +9,14 @@ export default function ManageInventory(props) {
 
 	const [rentalId, setRentalId] = useState(props.detail.rentalId);
 	const [inventoryDate, setInventoryDate] = useState(props.detail.inventoryDate);
+	const [remarks, setRemarks] = useState(props.detail.remarks);
+
 
 
 	let formData = {
 		rentalId: rentalId,
 		inventoryDate: inventoryDate,
+		remarks: remarks,
 	}
 
 	return (
@@ -24,6 +27,7 @@ export default function ManageInventory(props) {
 			<tbody>
 				<tr><th>ID</th><td><input className={styles.readOnly} type='number' name='rentalId' value={rentalId} onChange={(e) => setRentalId(e.target.value)} readOnly inert='true' /></td></tr>
 				<tr><th>棚卸日</th><td><input type='date' name='inventoryDate' value={inventoryDate} onChange={(e) => setInventoryDate(e.target.value)} /></td></tr>
+				<tr><th>備考</th><td><input type='text' name='remaks' value={remarks} onChange={(e) => setRemarks(e.target.value)} /></td></tr>
 			</tbody>
 		</table>
 	</div>

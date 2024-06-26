@@ -8,10 +8,14 @@
   --bg-color-front: #2e2e2e;
   --bg-color-innerHeader: #303030;
   --bg-color-form:#232323;
-  --bg-color-form-hover: #2a2a2as;
+  --bg-color-form-hover: #2a2a2a;
+
+  --bg-color-scroll:#7c7c7c;
+  --bg-color-scroll-hover:#969696;
 
   --border-color: #666666;
   --border-color-button:#ffffff;
+  --border-color-filter:#a0a0a0;
 
   --ac-color-primary: #fa8e36;
   --ac-color-secondary: #04aa6d;
@@ -40,4 +44,18 @@ body{
 body *{
   margin:0;
   padding:0;
+}
+
+::-webkit-scrollbar {
+  background: var(--bg-color-front);
+  width:5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg-color-scroll);
+  border-radius: 2.5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color:var(--bg-color-scroll-hover);
+  border-radius: 2.5px;
 }
