@@ -6,12 +6,13 @@ import styles from './page.module.css';
 import Sider from "@/app/components/sider";
 import Header from "@/app/components/header";
 import { useRecoilValue } from 'recoil';
-import { activeId } from '@/state/states';
+import { activeId, activeMode } from '@/state/states';
 
 
 export default function Home() {
 
   const activeIdValue = useRecoilValue(activeId);
+  const activeModeValue = useRecoilValue(activeMode);
 
   return (
 
@@ -27,7 +28,7 @@ export default function Home() {
             <PanelResizeHandle className={styles.resizeHandle} />
             <Panel defaultSize={60}>
               <div className={styles.detailContainer}>
-                {activeIdValue === null ? <></> : <Detail />}
+                {activeIdValue === null && activeModeValue !== 'Register' ? <></> : <Detail />}
               </div>
             </Panel>
           </PanelGroup>
