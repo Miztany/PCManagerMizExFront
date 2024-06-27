@@ -11,7 +11,7 @@ import ManageRental from './manage/manageRental';
 import ManageInventory from './manage/manageInventory';
 import ManageReturn from './manage/manageReturn';
 import { useRecoilValue } from 'recoil';
-import { activeId, detailtUrl, activeTarget, activeMode } from '@/state/states';
+import { detailtUrl, activeTarget, activeMode } from '@/state/states';
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -19,10 +19,13 @@ export default function Detail(props) {
 	const activeTargetValue = useRecoilValue(activeTarget);
 	const activeModeValue = useRecoilValue(activeMode);
 
+
 	// 通信して詳細を取得
 	const { data, error, isLoading } = useSWR(useRecoilValue(detailtUrl), fetcher);
 	if (error) return <div>failed to load</div>;
 	if (isLoading) return <></>;
+	if (!data) return <div>please try again later.</div>;
+
 	const detail = data.content;
 
 	switch (activeTargetValue) {

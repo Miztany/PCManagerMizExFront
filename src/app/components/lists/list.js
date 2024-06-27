@@ -14,11 +14,13 @@ export default function List(props) {
 	const activeTargetValue = useRecoilValue(activeTarget);
 
 	// 通信して一覧を取得
-	const { data, error, isLoading, mutate } = useSWR(useRecoilValue(listUrl), fetcher);
-	// setRefreshList(mutate);
+	const { data, error, isLoading } = useSWR(useRecoilValue(listUrl), fetcher);
 	if (error) return <div>failed to load</div>;
 	if (isLoading) return <div>loading...</div>;
+	if (!data) return <div>please try again later.</div>;
 	const list = data;
+
+
 
 	switch (activeTargetValue) {
 		case 'Rental':

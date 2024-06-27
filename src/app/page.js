@@ -5,9 +5,13 @@ import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
 import styles from './page.module.css';
 import Sider from "@/app/components/sider";
 import Header from "@/app/components/header";
+import { useRecoilValue } from 'recoil';
+import { activeId } from '@/state/states';
 
 
 export default function Home() {
+
+  const activeIdValue = useRecoilValue(activeId);
 
   return (
 
@@ -23,7 +27,7 @@ export default function Home() {
             <PanelResizeHandle className={styles.resizeHandle} />
             <Panel defaultSize={60}>
               <div className={styles.detailContainer}>
-                <Detail />
+                {activeIdValue === null ? <></> : <Detail />}
               </div>
             </Panel>
           </PanelGroup>

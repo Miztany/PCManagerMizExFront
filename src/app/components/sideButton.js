@@ -16,8 +16,8 @@ export default function SideButton(props) {
 		<div
 			className={buttonClass}
 			onClick={() => {
-				setActiveId(null);
 				setActiveMode('View');
+				setActiveId(null);
 				setActiveTarget(props.target);
 			}}
 			role='button'
