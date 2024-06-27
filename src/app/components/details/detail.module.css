@@ -13,6 +13,7 @@
 	flex-grow: 1;
 	margin: 0 10px;
 	font-family: "M PLUS 1p", sans-serif;
+	white-space: nowrap
 }
 
 .detailButton {
