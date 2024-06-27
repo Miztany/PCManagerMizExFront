@@ -18,6 +18,7 @@ export default function EditDevice(props) {
 	const deleteUrlValue = useRecoilValue(deleteUrl);
 
 
+
 	const [assetNum, setAssetNum] = useState(props.detail.assetNum);
 	const [maker, setMaker] = useState(props.detail.maker);
 	const [operatingSystem, setOperatingSystem] = useState(props.detail.operatingSystem);
