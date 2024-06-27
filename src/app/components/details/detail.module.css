@@ -35,6 +35,8 @@
 
 .detailBody {
 	flex-grow: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
 
 }
 
@@ -42,6 +44,7 @@
 	font-size: 1.1rem;
 	margin: 5px;
 	border-spacing: 5px;
+	width:auto;
 
 }
 
@@ -53,6 +56,11 @@
 .detailTable th,
 .detailTable td {
 	height: 1.8rem;
+}
+
+.detailTable td{
+	white-space: normal;
+	word-break : break-all;
 }
 
 .editTable {
