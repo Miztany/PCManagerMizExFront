@@ -1,0 +1,84 @@
+.loginContainer {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	margin: auto;
+	height: 200px;
+	width: 400px;
+	background-color: var(--bg-color-front);
+	border-radius: 15px;
+	border: 1px solid var(--border-color);
+	padding: 20px;
+	color: var(--font-color-main);
+	font-size: 1.2rem;
+}
+
+.loginContainer h1 {
+	font-size: 1.8rem;
+	text-align: center;
+}
+
+
+.loginContainer button {
+	margin: 5px;
+	width: 390px;
+	height: calc(50px - 14px);
+	border: none;
+	background-color: var(--ac-color-secondary);
+	color: var(--font-color-strong);
+	font-weight: normal;
+	border-radius: 5px;
+	font-size: 1.0rem;
+	font-family: "M PLUS 1p", sans-serif;
+}
+
+.loginContainer button:hover {
+	background-color: var(--ac-color-secondary-hover);
+}
+
+
+.loginContainer table {
+	font-size: 1.1rem;
+	margin: 5px;
+	border-spacing: 5px;
+}
+
+.loginContainer th,
+.loginContainer td {
+	height: 1.8rem;
+	width:100px;
+}
+
+.loginContainer th {
+	background-color: var(--table-color-normal);
+	padding: 2px 10px;
+}
+
+.loginContainer input {
+	border-radius: 3px;
+	height: 1.7rem;
+	border: 1px solid var(--border-color);
+	background-color: var(--bg-color-form);
+	color: var(--font-color-main);
+	font-family: "Sawarabi Gothic", sans-serif;
+	font-style: normal;
+	width: 250px;
+	box-shadow: none;
+	padding: 0 3px;
+	font-size: 1.1rem;
+}
+
+.loginContainer input:hover {
+	background-color: var(--bg-color-form-hover);
+}
+
+.loginContainer input:focus {
+	outline: 1px solid var(--ac-color-primary);
+	border: none;
+}
+
+.borderError{
+	border-color: var(--border-color-danger) !important;
+}

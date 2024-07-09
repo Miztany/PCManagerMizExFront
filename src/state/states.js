@@ -12,7 +12,7 @@ export const activeId = atom({
 	default: 'null',
 });
 
-// mode: View, Edit, Register, Rental, Return, Inventory 
+// mode: View, Edit, Register, Rental, Return, Inventory
 export const activeMode = atom({
 	key: 'activeMode',
 	default: 'View',
@@ -23,7 +23,7 @@ export const listUrl = selector({
 	key: 'listUrl',
 	get:({get}) => process.env.NEXT_PUBLIC_SPRING_URL + '/get' + get(activeTarget) + 'List',
 });
-export const detailtUrl = selector({
+export const detailUrl = selector({
 	key: 'detailUrl',
 	get:({get}) => process.env.NEXT_PUBLIC_SPRING_URL + '/get' + get(activeTarget) + 'Detail?id=' + get(activeId),
 });

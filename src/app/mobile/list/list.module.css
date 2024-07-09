@@ -1,0 +1,95 @@
+.windowContainer{
+	width:100vw;
+	height:100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.listContainer{
+	height: 100px;
+	flex-grow: 1;
+	background-color: var(--bg-color-front);
+	border: 1px solid var(--border-color);
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+
+.listFilter{
+	margin:7px;
+	width:200px;
+	height:calc( 50px - 16px);
+	border: none;
+	font-weight: normal;
+	border-radius: 3px;
+	border: 1px solid var(--border-color-filter);
+	background-color: var(--bg-color-form);
+	color: var(--font-color-main);
+	font-family: "Sawarabi Gothic", sans-serif;
+	font-style: normal;
+	box-shadow: none;
+	padding: 0 3px;
+	font-size: 1.0rem;
+}
+
+.listFilter:hover {
+	background-color: var(--bg-color-form-hover);
+}
+
+.listButton{
+	margin:7px;
+	width:150px;
+	height:calc( 50px - 14px);
+	border: none;
+	background-color: var(--ac-color-secondary);
+	color: var(--font-color-strong);
+	font-weight: normal;
+	border-radius: 5px;
+	font-size: 1.0rem;
+	font-family: "M PLUS 1p", sans-serif;
+}
+
+.listButton:hover{
+	background-color: var(--ac-color-secondary-hover);
+}
+
+.table {
+	border-spacing: 0px 5px;
+	width: calc(100% - 20px);
+	margin:0 10px;
+	text-align: center;
+}
+
+.header th {
+	white-space: nowrap;
+}
+
+.header{
+	height: 3rem;
+}
+
+
+.record {
+	background-color: var(--table-color-normal);
+	height:2.5rem;
+}
+
+.record:hover{
+	background-color: var(--table-color-hover);
+}
+
+
+.active{
+	background-color: var(--table-color-active) !important;
+	background-color: aqua;
+}
+
+.record td {
+	padding: 5px 20px;
+	white-space: nowrap;
+}
+
+.sorticon{
+	height:1.5rem;
+}

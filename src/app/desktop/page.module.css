@@ -1,0 +1,45 @@
+.windowContainer {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+}
+
+.windowHeader {
+	height: 60px;
+	flex-shrink: 0;
+}
+
+.windowNonHeader {
+	height:calc(100% - 60px - 4px);
+	width:100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.windowSider {
+	width: 80px;
+}
+
+.windowNonSider {
+	width:calc(100% - 80px);
+	background-color: var(--bg-color-front);
+	border: 1px var(--border-color) solid;
+	border-radius: 5px;
+	margin: 2px;
+}
+
+.resizeHandle {
+	border: 1px solid var(--border-color);
+}
+
+.panelGroup > div {
+	height:100%;
+}
+
+
+.detailContainer {
+	display: flex;
+	height: 100%;
+	width:100%;
+	flex-direction: column;
+}

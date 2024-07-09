@@ -1,0 +1,63 @@
+.siderContainer{
+	display:flex;
+	height:100%;
+	flex-direction: column;
+}
+
+.sideButton{
+	font-family: "M PLUS 1p", sans-serif;
+	font-weight: normal;
+	border-radius: 15px;
+	width:60px;
+	height:60px;
+	text-align: center;
+	margin:8px auto;
+	display:block;
+	color:var(--font-color-strong);
+	background-color: var(--bg-color-base);
+	flex-grow: 0;
+}
+
+.sideButton:hover{
+	background-color: var(--bg-color-base-hover);
+}
+
+.activeButton{
+	background-color: var(--ac-color-primary) !important;
+}
+
+.icon{
+	position:relative;
+	height:30px;
+	width:30px;
+	top:8px;
+	left:15px;
+}
+
+.text{
+	position: relative;
+	top:5px;
+	font-size: 0.9rem;
+}
+
+.blank{
+	flex-grow: 1;
+}
+
+.logoutButton{
+	font-family: "M PLUS 1p", sans-serif;
+	font-weight: normal;
+	border-radius: 15px;
+	width:60px;
+	height:60px;
+	text-align: center;
+	margin:15px auto;
+	display:block;
+	color:var(--font-color-strong);
+	background-color: var(--ac-color-secondary);
+	flex-grow: 0;
+}
+
+.logoutButton:hover{
+	background-color: var(--ac-color-secondary-hover);
+}

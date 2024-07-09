@@ -1,0 +1,45 @@
+.windowFooter{
+	height:70px;
+	background-color: var(--bg-color-front);
+	border: 1px solid var(--border-color);
+	display: grid;
+	grid-template-rows: 70px;
+    grid-template-columns: 100px 100px 100px;
+	justify-content: space-around;
+}
+
+.buttonFooter{
+	font-family: "M PLUS 1p", sans-serif;
+	font-weight: normal;
+	border-radius: 15px;
+	width:100px;
+	height:60px;
+	text-align: center;
+	margin:5px auto;
+	display:block;
+	color:var(--font-color-strong);
+	background-color: var(--bg-color-front);
+	flex-grow: 0;
+}
+
+.buttonFooer:hover{
+	background-color: var(--bg-color-base-hover);
+}
+
+.buttonActive{
+	background-color: var(--ac-color-primary) !important;
+}
+
+.icon{
+	position:relative;
+	height:30px;
+	width:30px;
+	top:8px;
+	left:35px;
+}
+
+.text{
+	position: relative;
+	top:5px;
+	font-size: 0.9rem;
+}

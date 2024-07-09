@@ -1,0 +1,47 @@
+.detailHeader {
+	height: 50px;
+	width:100%;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: row;
+	vertical-align: middle;
+
+}
+
+.detailHeader h2 {
+	font-size: 1.2rem;
+	line-height: 50px;
+	font-weight: normal;
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin: 0 10px;
+	font-family: "M PLUS 1p", sans-serif;
+	white-space: nowrap;
+	color:var(--font-color-strong);
+}
+
+.backIcon{
+	margin:10px 5px;
+	color:var(--font-color-strong);
+}
+
+.detailFooter {
+	height: 50px;
+	border-top: 1px solid var(--border-color);
+	display: flex;
+	flex-direction: row;
+	vertical-align: middle;
+}
+
+.detailFooter div {
+	flex-grow: 1;
+}
+
+.detailButtonDanger {
+	background-color: var(--color-danger);
+}
+
+.detailButtonDanger:hover {
+	background-color: var(--color-danger-hover);
+}
+
