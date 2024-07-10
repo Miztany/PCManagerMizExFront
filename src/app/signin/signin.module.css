@@ -85,12 +85,12 @@
 
 @media screen and (max-width:500px) {
 	.loginContainer {
-		width: 90vw;
+		width: 90dvw;
 		height:fit-content;
 	}
 	
 	.loginContainer button {
-		width: 85vw;
+		width: 85dvw;
 	}
 	.loginContainer input {
 		width: auto;
