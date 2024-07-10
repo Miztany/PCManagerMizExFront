@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import styles from './signin.module.css'
 
 export default function LoginForm() {
@@ -16,7 +17,6 @@ export default function LoginForm() {
 		  event.preventDefault()
 	  
 		  const callbackUrl = searchParams.get('callbackUrl') || '/'
-	  
 	  
 		  try {
 			const response = await signIn('credentials', {
