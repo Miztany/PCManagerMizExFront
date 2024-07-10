@@ -1,8 +1,8 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../compnents/detailHeader';
-import DetailFooter from '../compnents/detailFooter';
+import DetailHeader from '../components/detailHeader';
+import DetailFooter from '../components/detailFooter';
 import registerRecord from '@/app/desktop/action/registerRecord';
 import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

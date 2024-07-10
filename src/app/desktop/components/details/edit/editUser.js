@@ -1,8 +1,8 @@
 'use client'
 
 import styles from '../detail.module.css'
-import DetailHeader from '../compnents/detailHeader';
-import DetailFooter from '../compnents/detailFooter';
+import DetailHeader from '../components/detailHeader';
+import DetailFooter from '../components/detailFooter';
 import deleteRecord from '@/app/desktop/action/deleteRecord';
 import saveRecord from '@/app/desktop/action/saveRecord';
 import { useState } from 'react';

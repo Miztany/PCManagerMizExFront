@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import nextPWA from 'next-pwa';
+
 const nextConfig = {
  // 全ての API routes にマッチ
  async headers() {
@@ -32,5 +34,15 @@ const nextConfig = {
 	
 };
 
-export default nextConfig;
 
+
+const withPWA = nextPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+})
+
+export default withPWA({
+  ...nextConfig,
+  reactStrictMode: true,
+})

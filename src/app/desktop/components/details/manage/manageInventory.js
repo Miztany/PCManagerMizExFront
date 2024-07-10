@@ -2,7 +2,7 @@
 import styles from '../detail.module.css'
 import { useState } from 'react';
 import saveRecord from '@/app/desktop/action/saveRecord';
-import DetailHeader from '../compnents/detailHeader';
+import DetailHeader from '../components/detailHeader';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { manageUrl, activeMode } from '@/state/states';
 
