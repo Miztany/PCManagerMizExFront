@@ -21,19 +21,24 @@ export default function ManageInventory(props) {
 		remarks: remarks,
 	}
 
+	const buttons = <>
+		<input type='button' value='キャンセル' className={styles.detailButton} onClick={() => setActiveMode('View')} />
+		<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(manageUrlValue, formData, setActiveMode)} />
+	</>
+
 	return (
-<>
-	<DetailHeader title='棚卸' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(manageUrlValue, formData, setActiveMode)} />} />
-	<div className={styles.detailBody}>
-		<table className={styles.editTable}>
-			<tbody>
-				<tr><th>ID</th><td><input className={styles.readOnly} type='number' name='rentalId' value={rentalId} onChange={(e) => setRentalId(e.target.value)} readOnly inert='true' /></td></tr>
-				<tr><th>棚卸日</th><td><input type='date' name='inventoryDate' value={inventoryDate} onChange={(e) => setInventoryDate(e.target.value)} /></td></tr>
-				<tr><th>備考</th><td><input type='text' name='remaks' value={remarks} onChange={(e) => setRemarks(e.target.value)} /></td></tr>
-			</tbody>
-		</table>
-	</div>
-</>
+		<>
+			<DetailHeader title='棚卸' buttons={buttons} />
+			<div className={styles.detailBody}>
+				<table className={styles.editTable}>
+					<tbody>
+						<tr><th>ID</th><td><input className={styles.readOnly} type='number' name='rentalId' value={rentalId} onChange={(e) => setRentalId(e.target.value)} readOnly inert='true' /></td></tr>
+						<tr><th>棚卸日</th><td><input type='date' name='inventoryDate' value={inventoryDate} onChange={(e) => setInventoryDate(e.target.value)} /></td></tr>
+						<tr><th>備考</th><td><input type='text' name='remarks' value={remarks} onChange={(e) => setRemarks(e.target.value)} /></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</>
 	)
 }
 

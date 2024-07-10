@@ -51,9 +51,14 @@ export default function EditDevice(props) {
 		deleteFlag: deleteFlag,
 	}
 
+	const buttons = <>
+	<input type='button' value='キャンセル' className={styles.detailButton} onClick={() => setActiveMode('View')} />
+	<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(saveUrlValue, formData, setActiveMode)} />
+	</>
+
 	return (
 		<>
-			<DetailHeader title='機器編集' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => saveRecord(saveUrlValue, formData, setActiveMode)} />} />
+			<DetailHeader title='機器編集' buttons={buttons} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

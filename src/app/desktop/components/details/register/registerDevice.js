@@ -46,9 +46,14 @@ export default function RegisterDevice(props) {
 		deleteFlag: deleteFlag,
 	}
 
+	const buttons = <>
+		<input type='button' value='キャンセル' className={styles.detailButton} onClick={() => setActiveMode('View')} />
+	<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(assetNum)) }} />
+	</>
+
 	return (
 		<>
-			<DetailHeader title='機器登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(assetNum)) }} />} />
+			<DetailHeader title='機器登録' buttons={buttons} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

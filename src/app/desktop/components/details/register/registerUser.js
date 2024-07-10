@@ -47,9 +47,14 @@ export default function RegisterUser(props) {
 		deleteFlag: deleteFlag,
 	}
 
+	const buttons = <>
+		<input type='button' value='キャンセル' className={styles.detailButton} onClick={() => setActiveMode('View')} />
+		<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(employeeNum)) }} />
+	</>
+
 	return (
 		<>
-			<DetailHeader title='ユーザー登録' buttons={<input type='button' value='完了' className={styles.detailButton} onClick={() => { registerRecord(registerUrlValue, formData, setActiveMode, () => setActiveId(employeeNum)) }} />} />
+			<DetailHeader title='ユーザー登録' buttons={buttons} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>

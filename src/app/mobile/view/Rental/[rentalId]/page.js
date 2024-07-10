@@ -5,6 +5,7 @@ import DetailHeader from "@/app/mobile/compnents/detailHeader"
 import useSWR from "swr"
 import styles from '../../view.module.css'
 import { useEffect } from "react"
+import Link from "next/link"
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -32,16 +33,16 @@ export default function ViewRental({ params }) {
 	let buttons;
 	if (detail.free) {
 		buttons = <>
-			<input type='button' value='貸出' className={styles.detailButton} onClick={() => setActiveMode('Rental')} />
-			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} />
+			<Link href={`/mobile/manage/${params.rentalId}/manageRental`}><input type='button' value='貸出' className={styles.detailButton} /></Link>
+			<Link href={`/mobile/manage/${params.rentalId}/manageInventory`}><input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} /></Link>
 		</>
 	} else {
 		let dt = new Date(detail.loanDate);
 		dt.setMonth(dt.getMonth() + 3);
 		returnExpDate = dt.toLocaleDateString('sv-SE')
 		buttons = <>
-			<input type='button' value='返却' className={styles.detailButton} onClick={() => setActiveMode('Return')} />
-			<input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} />
+			<Link href={`/mobile/manage/${params.rentalId}/manageReturn`}><input type='button' value='返却' className={styles.detailButton} onClick={() => setActiveMode('Return')} /></Link>
+			<Link href={`/mobile/manage/${params.rentalId}/manageInventory`}><input type='button' value='棚卸' className={styles.detailButton} onClick={() => setActiveMode('Inventory')} /></Link>
 		</>
 
 	}

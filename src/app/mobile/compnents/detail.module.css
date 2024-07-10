@@ -45,3 +45,19 @@
 	background-color: var(--color-danger-hover);
 }
 
+.linkRegister{
+	position:fixed;
+	background:var(--ac-color-secondary);
+	width:60px;
+	height:60px;
+	border-radius: 30px;
+	bottom:100px;
+	right:30px;
+}
+
+.icon{
+	color:var(--font-color-strong);
+	width:40px;
+	height:40px;
+	margin:10px;
+}

@@ -82,3 +82,17 @@
 .borderError{
 	border-color: var(--border-color-danger) !important;
 }
+
+@media screen and (max-width:500px) {
+	.loginContainer {
+		width: 90vw;
+		height:fit-content;
+	}
+	
+	.loginContainer button {
+		width: 85vw;
+	}
+	.loginContainer input {
+		width: auto;
+	}
+}

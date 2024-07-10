@@ -30,14 +30,27 @@ export default function List(){
 	if (!data) return <div>please try again later.</div>;
 	const list = data;
 
+ let content;
+
 	switch (activeTargetValue) {
 		case 'Rental':
-			return <div className={styles.windowContainer}><Header /><ListRental list={list} /><Footer /></div>;
+			content = <ListRental list={list} />;
+			break;
 		case 'Device':
-			return <div className={styles.windowContainer}><Header /><ListDevice list={list} /><Footer /></div>;
+			content = <ListDevice list={list} />;
+			break;
 		case 'User':
-			return <div className={styles.windowContainer}><Header /><ListUser list={list} /><Footer /></div>;
+			content = <ListUser list={list} />;
+			break;
 		default:
-			return <></>;
+			content = <></>;
 	}
+
+	return (
+		<div className={styles.windowContainer}>
+			<Header />
+			{content}
+			<Footer />
+			</div>
+	)
 }

@@ -3,7 +3,7 @@ import { getCoreRowModel, useReactTable, getSortedRowModel, getFilteredRowModel 
 import { useMemo } from "react";
 import { columnsDevice } from './columns/columnsDevice';
 import ListTable from './components/listTable';
-
+import ButtonRegister from '../compnents/buttonRegister';
 
 export default function ListDevice(props) {
 
@@ -31,9 +31,12 @@ export default function ListDevice(props) {
 	const filter = <input type='text' className={styles.listFilter} placeholder="検索" onChange={(e) => table.setGlobalFilter(e.target.value)} />;
 
 	return (
+		<>
 		<div className={styles.listContainer}>
 				<ListTable table={table} id='assetNum' />
 		</div>
+		<ButtonRegister url={'/mobile/register/Device'} />
+		</>
 
 	);
 }

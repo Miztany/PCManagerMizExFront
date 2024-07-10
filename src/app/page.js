@@ -8,5 +8,5 @@ export default function Home() {
   const isMobile = /mobile/i.test(userAgent);
 
   if (isMobile) redirect('/mobile');
-  return redirect('/desktop');
+  redirect('/desktop');
   }

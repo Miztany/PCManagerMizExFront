@@ -6,6 +6,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil"
 import { detailUrl, activeId, activeMode,activeTarget } from "@/state/states"
 import useSWR from "swr"
 import { useEffect } from "react"
+import Link from 'next/link'
 
 const fetcher = url => fetch(url).then(r => r.json());
 
@@ -45,7 +46,7 @@ export default function ViewUser({params}) {
 
 	return (
 		<div className={styles.detailContainer}>
-			<DetailHeader title='ユーザー詳細' buttons={<input type='button' value='編集' className={styles.detailButton} onClick={() => setActiveMode('Edit')} />} />
+			<DetailHeader title='ユーザー詳細' buttons={<Link href={`/mobile/edit/User/${params.employeeNum}`}><input type='button' value='編集' className={styles.detailButton} /></Link>} />
 			<div className={styles.detailBody}>
 			<table className={styles.detailTable}>
 				<tbody>
@@ -66,5 +67,7 @@ export default function ViewUser({params}) {
 			</table>
 			</div>
 		</div>
+
+
 	);
 }

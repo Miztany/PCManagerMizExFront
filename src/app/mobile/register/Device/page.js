@@ -1,28 +1,21 @@
 'use client'
 
-import styles from '../../edit.module.css'
-import DetailHeader from '../../../compnents/detailHeader';
-import DetailFooter from '../../../compnents/detailFooter';
-import deleteRecord from '@/app/mobile/action/deleteRecord';
-import saveRecord from '@/app/mobile/action/saveRecord';
+import styles from '../register.module.css'
+import DetailHeader from '../../compnents/detailHeader';
+import DetailFooter from '../../compnents/detailFooter';
+import registerRecord from '@/app/desktop/action/registerRecord';
 import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { saveUrl, activeMode, activeId, deleteUrl, activeTarget, detailUrl } from '@/state/states';
-import { useEffect } from 'react';
-import useSWR from 'swr';
+import { activeId, activeMode, registerUrl, activeTarget } from '@/state/states';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-const fetcher = url => fetch(url).then(r => r.json());
+export default function RegisterDevice(props) {
 
-export default function EditDevice({ params }) {
-
-	const dangerButtonClass = styles.detailButton + ' ' + styles.detailButtonDanger
 	const setActiveMode = useSetRecoilState(activeMode);
 	const setActiveId = useSetRecoilState(activeId);
-	const saveUrlValue = useRecoilValue(saveUrl);
-	const deleteUrlValue = useRecoilValue(deleteUrl);
+	const registerUrlValue = useRecoilValue(registerUrl);
 	const setActiveTarget = useSetRecoilState(activeTarget);
-	const detailUrlValue = useRecoilValue(detailUrl);
 	const router = useRouter();
 
 	const [formData, setFormData] = useState({
@@ -36,33 +29,16 @@ export default function EditDevice({ params }) {
 		failure: false,
 		startDate: '',
 		endDate: '',
-		registerDate: '',
-		updateDate: '',
+		registerDate: (new Date()).toLocaleDateString('sv-SE'),
+		updateDate: (new Date()).toLocaleDateString('sv-SE'),
 		remarks: '',
 		deleteFlag: false,
 	});
 
 	useEffect(() => {
-		setActiveId(params.assetNum);
 		setActiveTarget('Device');
-		setActiveMode('Edit');
-	}, [params.assetNum]);
-
-	// 通信して詳細を取得
-	const { data, error, isLoading } = useSWR(detailUrlValue, fetcher);
-
-	useEffect(() => {
-		if (data && data.result && data.content) {
-			detail.remarks = detail.remarks || '';
-			setFormData(detail);
-		}
-	}, [data]);
-
-	if (error) return <div>failed to load</div>;
-	if (isLoading) return <></>;
-	if (!data || !data.result) return <div>please try again later.</div>;
-
-	const detail = data.content;
+		setActiveMode('Register');
+	}, []);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -74,37 +50,39 @@ export default function EditDevice({ params }) {
 			type='button'
 			value='キャンセル'
 			className={styles.detailButton}
-			onClick={() => router.push(`/mobile/view/Device/${params.assetNum}`)} />
+			onClick={() => router.push(`/mobile/list`)} />
 		<input
 			type='button'
 			value='完了'
 			className={styles.detailButton}
 			onClick={() => {
-				saveRecord(saveUrlValue, formData, setActiveMode, () => router.push(`/mobile/view/Device/${params.assetNum}`));
-
+				registerRecord(registerUrlValue, formData, setActiveMode, () => {
+					setActiveId(formData.assetNum);
+					router.push(`/mobile/view/Device/${formData.assetNum}`);
+				})
 			}} />
 	</>
-	
+
 	return (
-		<div className={styles.editContainer}>
-			<DetailHeader title='機器編集' buttons={buttons} />
+		<div className={styles.registerContainer}>
+			<DetailHeader title='機器登録' buttons={buttons} />
 			<div className={styles.detailBody}>
 				<table className={styles.editTable}>
 					<tbody>
-						<tr><th>資産番号</th><td><input className={styles.readOnly} type='text' name='assetNum' value={formData.assetNum} onChange={handleInputChange} readOnly inert='true' /></td></tr>
+						<tr><th>資産番号</th><td><input type='text' name='assetNum' value={formData.assetNum} onChange={handleInputChange} /></td></tr>
 						<tr><th>メーカー</th><td><input type='text' name='maker' value={formData.maker} onChange={handleInputChange} /></td></tr>
 						<tr><th>OS</th><td><input type='text' name='operatingSystem' value={formData.operatingSystem} onChange={handleInputChange} /></td></tr>
 						<tr><th>メモリ</th><td><input type='number' name='memory' value={formData.memory} onChange={handleInputChange} />GB</td></tr>
 						<tr><th>容量</th><td><input type='text' name='capacity' value={formData.capacity} onChange={handleInputChange} /></td></tr>
 						<tr><th>グラフィックボード</th><td>
-							<select name='graphicsboard' value={formData.graphicsBoard} onChange={handleInputChange} >
+							<select name='graphicsboard' value={formData.graphicsBoard} onChange={handleInputChange}>
 								<option value={true}>あり</option>
 								<option value={false}>なし</option>
 							</select>
 						</td></tr>
 						<tr><th>保管場所</th><td><input type='text' name='storageLocation' value={formData.storageLocation} onChange={handleInputChange} /></td></tr>
 						<tr><th>故障</th><td>
-							<select name='failure' value={formData.failure} onChange={handleInputChange} >
+							<select name='failure' value={formData.failure} onChange={handleInputChange}>
 								<option value={true}>あり</option>
 								<option value={false}>なし</option>
 							</select>
@@ -117,7 +95,7 @@ export default function EditDevice({ params }) {
 					</tbody>
 				</table>
 			</div>
-			<DetailFooter buttons={<input type='button' value='削除' className={dangerButtonClass} onClick={() => deleteRecord(deleteUrlValue, formData, setActiveMode, setActiveId, () => router.push(`/mobile/list`))} />} />
+			<DetailFooter />
 		</div>
-	);
+	)
 }
