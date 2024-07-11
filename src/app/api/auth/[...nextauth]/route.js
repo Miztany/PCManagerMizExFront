@@ -10,7 +10,7 @@ export const authOptions = {
 				password: { label: "パスワード", type: "password" }
 			},
 			async authorize(credentials, req) {
-				const loginUrl = process.env.NEXT_PUBLIC_SPRING_URL + '/login';
+				const loginUrl = process.env.NEXT_HIDDEN_SPRING_URL + '/login';
 				const res = await fetch(loginUrl, {
 					method: 'POST',
 					body: JSON.stringify(credentials),
