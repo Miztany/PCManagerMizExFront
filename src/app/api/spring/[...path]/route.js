@@ -8,7 +8,7 @@ async function handleRequest(request, context, method){
 		}
 
 		const path = '/' + context.params.path.join('/');
-		let url = new URL(path, process.env.NEXT_HIDDEN_SPRING_URL);
+		let url = process.env.NEXT_HIDDEN_SPRING_URL + path;
 		let options = {method, headers, duplex:'half'};
 
 		console.log('Full URL:', url.toString());
