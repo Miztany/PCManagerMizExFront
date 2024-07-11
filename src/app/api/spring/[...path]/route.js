@@ -11,10 +11,6 @@ async function handleRequest(request, context, method){
 		let url = process.env.NEXT_HIDDEN_SPRING_URL + path;
 		let options = {method, headers, duplex:'half'};
 
-		console.log('Full URL:', url.toString());
-
-		console.log('NEXT_HIDDEN_SPRING_URL:', process.env.NEXT_HIDDEN_SPRING_URL);
-
 		for (const [key, value] of request.nextUrl.searchParams.entries()){
 			url.searchParams.append(key,value);
 		}
@@ -28,9 +24,7 @@ async function handleRequest(request, context, method){
 			}
 		}
 
-		console.log('Sending request to:', url.toString());
 		const externalResponse = await fetch(url,options);
-		console.log('Response status:', externalResponse.status);
 
 		const responseHeaders = new Headers();
 		for (const [key, value] of externalResponse.headers.entries()){

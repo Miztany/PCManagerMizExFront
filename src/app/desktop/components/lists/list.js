@@ -21,7 +21,7 @@ export default function List(props) {
 	if (!data) return <div>please try again later.</div>;
 	const list = data;
 
-
+	console.log(listUrlValue);
 
 	switch (activeTargetValue) {
 		case 'Rental':
