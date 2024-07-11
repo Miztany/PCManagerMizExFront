@@ -11,6 +11,8 @@ async function handleRequest(request, context, method){
 		let url = new URL(path, process.env.NEXT_HIDDEN_SPRING_URL);
 		let options = {method, headers, duplex:'half'};
 
+		console.log('Full URL:', url.toString());
+
 		console.log('NEXT_HIDDEN_SPRING_URL:', process.env.NEXT_HIDDEN_SPRING_URL);
 
 		for (const [key, value] of request.nextUrl.searchParams.entries()){
@@ -26,7 +28,9 @@ async function handleRequest(request, context, method){
 			}
 		}
 
+		console.log('Sending request to:', url.toString());
 		const externalResponse = await fetch(url,options);
+		console.log('Response status:', externalResponse.status);
 
 		const responseHeaders = new Headers();
 		for (const [key, value] of externalResponse.headers.entries()){
@@ -41,6 +45,7 @@ async function handleRequest(request, context, method){
 		});
 	}catch(error){
 		console.error(`Error fowarding ${method} request to external API:`, error);
+		console.error(error.stack)
 		return NextResponse.json({error: `Internal Server Error`}, {status:500});
 	}
 }
