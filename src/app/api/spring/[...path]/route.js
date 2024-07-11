@@ -8,11 +8,11 @@ async function handleRequest(request, context, method){
 		}
 
 		const path = '/' + context.params.path.join('/');
-		let url = process.env.NEXT_HIDDEN_SPRING_URL + path;
+		let url = new URL(process.env.NEXT_HIDDEN_SPRING_URL + path);
 		let options = {method, headers, duplex:'half'};
 
-		for (const [key, value] of request.nextUrl.searchParams.entries()){
-			url.searchParams.append(key,value);
+		for (const [key, value] of new URL(request.url).searchParams.entries()){
+			url.searchParams.append(key, value);
 		}
 		
 		if(method==='POST'){
@@ -24,8 +24,8 @@ async function handleRequest(request, context, method){
 			}
 		}
 
-		const externalResponse = await fetch(url,options);
-
+		const externalResponse = await fetch(url.toString(), options);
+		
 		const responseHeaders = new Headers();
 		for (const [key, value] of externalResponse.headers.entries()){
 			responseHeaders.append(key, value);
