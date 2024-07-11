@@ -11,6 +11,8 @@ async function handleRequest(request, context, method){
 		let url = new URL(path, process.env.NEXT_HIDDEN_SPRING_URL);
 		let options = {method, headers, duplex:'half'};
 
+		console.log('NEXT_HIDDEN_SPRING_URL:', process.env.NEXT_HIDDEN_SPRING_URL);
+
 		for (const [key, value] of request.nextUrl.searchParams.entries()){
 			url.searchParams.append(key,value);
 		}
