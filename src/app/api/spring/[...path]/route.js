@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 
-async function handleRequest(request, {params}, method){
+async function handleRequest(request, context, method){
 	try{
 		const headers = new Headers();
 		for (const [key,value] of request.headers.entries()){
 			headers.append(key, value);
 		}
 
-		const path = '/' + params.path.join('/');
+		const path = '/' + context.params.path.join('/');
 		let url = new URL(path, process.env.NEXT_HIDDEN_SPRING_URL);
 		let options = {method, headers, duplex:'half'};
 
@@ -16,7 +16,12 @@ async function handleRequest(request, {params}, method){
 		}
 		
 		if(method==='POST'){
-			options.body = request.body;
+			const contentType = request.headers.get('content-type');
+			if (contentType && contentType.includes('application/json')){
+				options.body = JSON.stringify(await request.json());
+			}else{
+				options.body = await request.text();
+			}
 		}
 
 		const externalResponse = await fetch(url,options);
